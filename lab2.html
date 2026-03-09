@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Magazin de Încălțăminte</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        center h1 {
+            margin-top: 20px;
+        }
+
+        img {
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            background: white;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #555;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+
+        fieldset {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            margin-top: 5px;
+        }
+
+        a {
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #003366;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .footer {
+            text-align: center;
+            margin: 30px 0;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body bgcolor="#f2f2f2">
+
+<center>
+    <h1>Magazinul de Încălțăminte <span><b>StepUp</b></span></h1>
+</center>
+
+<div align="center">
+    <img src="pantofi.jpg" width="300" height="200" alt="Imagine pantofi" title="Pantofi moderni">
+</div>
+
+<div class="container">
+
+<p>
+    <strong>StepUp</strong> este o aplicație web modernă dedicată vânzării de încălțăminte pentru toate vârstele.
+    Scopul aplicației este de a oferi utilizatorilor o experiență rapidă, intuitivă și plăcută.
+</p>
+
+<h2>Ce va conține aplicația</h2>
+
+<ul>
+    <li>Catalog de produse</li>
+    <li>Filtrare după mărime, culoare și tip</li>
+    <li>Coș de cumpărături</li>
+    <li>Formular de comandă</li>
+</ul>
+
+<h3>Funcționalități planificate</h3>
+
+<ol start="3">
+    <li>Autentificare utilizator</li>
+    <li>Recenzii produse</li>
+    <li>Secțiune de oferte</li>
+</ol>
+
+<br>
+
+<h2>Exemplu tabel produse</h2>
+
+<table border="1" width="70%" align="center">
+    <tr bgcolor="#cccccc">
+        <th>Nume produs</th>
+        <th colspan="2">Detalii</th>
+    </tr>
+    <tr valign="top">
+        <td>Pantofi sport</td>
+        <td>Preț: 200 lei</td>
+        <td align="center">Mărimi: 38-45</td>
+    </tr>
+    <tr valign="middle">
+        <td>Ghete piele</td>
+        <td>Preț: 350 lei</td>
+        <td align="center">Mărimi: 39-44</td>
+    </tr>
+</table>
+
+<br>
+
+<h2>Formular de contact</h2>
+
+<form action="#" method="post">
+    <fieldset>
+        <legend>Date personale</legend>
+
+        <p>Nume: <input type="text" name="nume" maxlength="30" size="25" value="Popescu" readonly></p>
+
+        <p>Email: <input type="email" name="email" size="30" disabled></p>
+
+        <p>Tip încălțăminte preferat:</p>
+        <select name="tip" multiple size="3">
+            <option value="sport" selected>Pantofi sport</option>
+            <option value="elegant">Pantofi eleganți</option>
+            <option value="casual">Pantofi casual</option>
+        </select>
+
+        <p>
+            Mărime dorită:
+            <input type="number" name="marime" min="35" max="46" step="1">
+        </p>
+
+        <p>
+            Abonare la newsletter:
+            <input type="checkbox" name="abonare" checked>
+        </p>
+
+        <p>
+            Mesaj:
+            <textarea name="mesaj" cols="40" rows="5">Scrie aici...</textarea>
+        </p>
+
+        <p>
+            <input type="submit" value="Trimite">
+        </p>
+    </fieldset>
+</form>
+
+<br>
+
+<p>
+    Vizitează și pagina noastră de oferte:
+    <a href="oferte.html" target="_blank">Click aici</a>
+</p>
+
+</div>
+
+<div class="footer">
+    © 2026 StepUp – Magazin de încălțăminte
+</div>
+
+</body>
+</html>
