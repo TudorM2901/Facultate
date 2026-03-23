@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicație Listă de Cumpărături</title>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background: #f3f6fb; }
+        header { background: #3164a9; color: #fff; padding: 18px 20px; text-align: center; }
+        .container { width: 90%; max-width: 980px; margin: 18px auto; }
+        fieldset, table, .resultat { background: white; border-radius: 8px; box-shadow: 0 1px 8px rgba(0,0,0,0.12); margin-bottom: 18px; padding: 14px; }
+        fieldset legend { font-weight: bold; }
+        label { display: inline-block; min-width: 110px; }
+        input[type="text"], input[type="number"], select, textarea { margin-bottom: 10px; }
+        .meniu { display: flex; justify-content: center; gap: 10px; margin: 10px 0; }
+        .meniu a { color: #ffffff; text-decoration: none; padding: 8px 12px; background: rgba(255,255,255,0.15); border-radius: 5px; }
+        .meniu a:hover { background: rgba(255,255,255,0.3); }
+        .flex-row { display: flex; gap: 18px; flex-wrap: wrap; }
+    </style>
+</head>
+<body height="1100">
+
+<header>
+    <center>
+        <h1>Aplicație Listă de Cumpărături</h1>
+        <h2>Gestionare ușoară și rapidă a cumpărăturilor</h2>
+        <p>Completează formularul de mai jos pentru a adăuga produse în listă. <strong>Fii atent la cantitate</strong> și <b>categoriile din selecție</b>.</p>
+        <img src="https://via.placeholder.com/120" alt="coș de cumpărături" width="120" height="120" title="Aplicație listă cumpărături">
+    </center>
+    <div class="meniu">
+        <a href="#form" name="form" target="_self">Adaugă produs</a>
+        <a href="#tabel" name="tabel" target="_self">Vezi produse</a>
+        <a href="#statistici" name="statistici" target="_self">Statistici</a>
+        <a href="#linkuri" name="linkuri" target="_blank">Link extern</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="top-info" style="height:80px; padding:10px;">Informații rapide: folosește formularul pentru a gestiona produsele.</div>
+
+    <section id="form">
+        <fieldset>
+            <legend>Adaugă un produs</legend>
+            <form id="produsForm">
+                <label>Nume produs:</label>
+                <input type="text" name="numeProdus" maxlength="30" size="20" value="Mere"><br><br>
+
+                <label>Cantitate:</label>
+                <input type="number" name="cantitate" max="50" step="1" value="1"><br><br>
+
+                <label>Categorie:</label>
+                <select name="categorie" multiple size="4">
+                    <option selected>Fructe</option>
+                    <option>Legume</option>
+                    <option>Băuturi</option>
+                    <option>Dulciuri</option>
+                </select><br><br>
+
+                <label>Proprietăți:</label><br>
+                <input type="checkbox" name="esențial" checked> Esențial<br>
+                <input type="checkbox" name="promoție"> Promoție<br>
+                <input type="checkbox" name="indisponibil" disabled> Indisponibil<br><br>
+
+                <label>Observații:</label><br>
+                <textarea name="observatii" cols="35" rows="4" readonly>Scrie aici detalii suplimentare...</textarea><br><br>
+
+                <input type="submit" value="Adaugă">
+                <input type="reset" value="Resetează">
+            </form>
+        </fieldset>
+    </section>
+
+    <section id="tabel">
+        <br>
+        <table border="1" width="100%" bgcolor="#f9f9f9">
+            <tr bgcolor="#d1d8e8">
+                <th>Produs</th>
+                <th>Cantitate</th>
+                <th>Categorie</th>
+                <th>Preț</th>
+            </tr>
+            <tr valign="middle">
+                <td>Mere</td><td>2</td><td>Fructe</td><td>4.5</td>
+            </tr>
+            <tr valign="middle">
+                <td>Pâine</td><td>1</td><td>Panificație</td><td>3.0</td>
+            </tr>
+            <tr valign="middle">
+                <td>Apă minerală</td><td>6</td><td>Băuturi</td><td>2.2</td>
+            </tr>
+            <tr bgcolor="#e8ecf6">
+                <td colspan="4" align="center"><strong>Total produse: 3</strong></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="statistici">
+        <div class="resultat" id="valoareTotal">Valoare totală stoc: ...</div>
+    </section>
+
+    <section>
+        <ol start="3">
+            <li>Completează formularul</li>
+            <li>Apasă Adaugă</li>
+            <li>Verifică lista și statistica</li>
+        </ol>
+
+        <ul>
+            <li>Fructe</li>
+            <li>Legume</li>
+            <li>Băuturi</li>
+            <li>Produse de uz casnic</li>
+        </ul>
+
+        <div id="linkuri">
+            <span>Linkuri utile:</span>
+            <a href="https://www.example.com" name="market" target="_blank">Exemplu 1</a> |
+            <a href="https://www.google.com" name="search" target="_blank">Google</a>
+        </div>
+    </section>
+</div>
+
+<script>
+    // 2a. Declarații variabile
+    var numeleMagazinului = 'SuperMagazin';
+    let numarProduse = 3;
+    const versiuneAplicatie = 'v1.0.0';
+
+    alert(numeleMagazinului);
+    console.log('Numar produse initial:', numarProduse);
+    document.write('<p>Versiune aplicație: ' + versiuneAplicatie + '</p>');
+
+    // 2b. Funcții
+    function calculeazaTotal(pret, cantitate) { return pret * cantitate; }
+    var aplicaDiscount = function(total, procent) { return total - total * procent / 100; };
+    const formatPret = suma => suma.toFixed(2) + ' RON';
+
+    // 2c. Apel funcții
+    const totalInitial = calculeazaTotal(25.5, 3);
+    const totalCuDiscount = aplicaDiscount(totalInitial, 10);
+    const totalFormatat = formatPret(totalCuDiscount);
+    console.log('Total final:', totalFormatat);
+
+    // 3a. Array produse
+    const produse = [
+        { nume: 'Mere', pret: 4.5, cantitate: 2, categorie: 'Fructe' },
+        { nume: 'Pâine', pret: 3.0, cantitate: 1, categorie: 'Panificație' },
+        { nume: 'Apă minerală', pret: 2.2, cantitate: 6, categorie: 'Băuturi' },
+        { nume: 'Lapte', pret: 5.5, cantitate: 1, categorie: 'Lactate' },
+        { nume: 'Ouă', pret: 0.6, cantitate: 12, categorie: 'Lactate' }
+    ];
+
+    produse.forEach(p => console.log('Produs', p));
+    const totalePerProdus = produse.map(p => p.pret * p.cantitate);
+    console.log('Total per produs', totalePerProdus);
+
+    // 3b. Obiect magazin
+    var magazin = {
+        nume: 'SuperMagazin',
+        adresa: 'Str. Principală 10',
+        produse: produse,
+        afiseazaProduse: function () { this.produse.forEach(p => console.log(p)); },
+        calculeazaValoareTotala: function () {
+            return this.produse.reduce((t, p) => t + p.pret * p.cantitate, 0);
+        },
+        gasesteProdus: function(numeProdus) {
+            return this.produse.find(p => p.nume === numeProdus);
+        }
+    };
+
+    // 3c. Testare
+    magazin.afiseazaProduse();
+    document.getElementById('valoareTotal').innerText = 'Valoare totală stoc: ' + formatPret(magazin.calculeazaValoareTotala());
+    console.log('Produs existent:', magazin.gasesteProdus('Mere'));
+    console.log('Produs inexistent:', magazin.gasesteProdus('Ciocolata') || 'Nu a fost găsit');
+
+    // 4a/4b. Formular + JS
+    document.getElementById('produsForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const form = document.forms[0];
+        const nume = form.elements['numeProdus'].value.trim();
+        const cantitate = parseFloat(form.elements['cantitate'].value);
+        const categorie = form.elements['categorie'].value;
+        const observatii = form.elements['observatii'].value;
+
+        const produsNou = { nume, pret: 1.0, cantitate, categorie, observatii };
+        console.log('Date formular:', produsNou);
+
+        if (!nume) { alert('Numele produsului nu poate fi gol.'); return; }
+        if (isNaN(cantitate) || cantitate <= 0) { alert('Cantitatea trebuie să fie un număr pozitiv.'); return; }
+
+        produse.push(produsNou);
+        numarProduse = produse.length;
+        console.log('Produs adăugat:', produsNou);
+        alert('Produsul a fost adăugat cu succes!');
+
+        document.getElementById('valoareTotal').innerText = 'Valoare totală stoc: ' + formatPret(magazin.calculeazaValoareTotala());
+        form.reset();
+    });
+</script>
+
+</body>
+</html>
