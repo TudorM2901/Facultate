@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6 - Lista de Cumparaturi</title>
+    <style>
+        :root {
+            --bg: #eef3f9;
+            --panel: #ffffff;
+            --primary: #24508a;
+            --primary-strong: #18385f;
+            --accent: #f3b53f;
+            --text: #1f2d3d;
+            --muted: #607086;
+            --border: #d9e2ee;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top right, rgba(243, 181, 63, 0.28), transparent 22%),
+                linear-gradient(180deg, #f7faff 0%, var(--bg) 100%);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
+            color: #fff;
+            padding: 32px 20px 48px;
+        }
+
+        .wrap {
+            width: min(1100px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            margin: 0 0 14px;
+            font-size: clamp(2rem, 5vw, 3.1rem);
+        }
+
+        .hero p {
+            margin: 0 0 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-card,
+        .card {
+            background: var(--panel);
+            border-radius: 18px;
+            box-shadow: 0 16px 40px rgba(27, 46, 78, 0.12);
+        }
+
+        .hero-card {
+            color: var(--text);
+            padding: 22px;
+        }
+
+        .actions,
+        .menu {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .button,
+        .menu a {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 11px 16px;
+            font-weight: 700;
+        }
+
+        .button.primary {
+            background: var(--accent);
+            color: #172030;
+        }
+
+        .button.secondary {
+            background: rgba(255, 255, 255, 0.14);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        main {
+            padding: 26px 0 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .card {
+            padding: 20px;
+        }
+
+        h2,
+        h3 {
+            margin-top: 0;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        ul,
+        ol {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.7;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid var(--border);
+            padding: 12px 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #f6f8fc;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #e7eef8;
+            color: var(--primary-strong);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin: 0 8px 8px 0;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 0 0 26px;
+        }
+
+        @media (max-width: 820px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrap hero">
+            <section>
+                <div class="menu">
+                    <a href="#cerinte">Cerintele Implementate</a>
+                    <a href="#exemple">Exemple Produse</a>
+                    <a href="#pasi">Cum Rulezi</a>
+                </div>
+                <h1>Aplicatie Lista de Cumparaturi</h1>
+                <p>
+                    Pagina aceasta prezinta tema de Lab 6 construita pornind de la codul initial din
+                    <strong>3.html</strong> si extinsa intr-o aplicatie completa cu Express, EJS, sesiuni,
+                    cookie-uri si rute protejate.
+                </p>
+                <div class="actions">
+                    <a class="button primary" href="http://localhost:3000" target="_blank" rel="noreferrer">Deschide Aplicatia</a>
+                    <a class="button secondary" href="#pasi">Vezi Pasii de Pornire</a>
+                </div>
+            </section>
+
+            <aside class="hero-card">
+                <h3>Rezumat rapid</h3>
+                <p class="muted">Tema include autentificare, dashboard, lista personala, setari tema si persistenta in memorie pe utilizator.</p>
+                <span class="pill">Express</span>
+                <span class="pill">EJS</span>
+                <span class="pill">Sessions</span>
+                <span class="pill">Cookies</span>
+                <span class="pill">Middleware</span>
+            </aside>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="grid" id="cerinte">
+            <article class="card">
+                <h2>Ce am implementat</h2>
+                <ul>
+                    <li>Inregistrare si autentificare utilizator.</li>
+                    <li>Rute protejate pentru dashboard si lista mea.</li>
+                    <li>Sesiuni pentru utilizatorul logat si numar de vizualizari.</li>
+                    <li>Cookie-uri pentru ultima vizita, tema si ultima categorie.</li>
+                    <li>Middleware propriu pentru logarea activitatii.</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h2>Structura proiectului</h2>
+                <ul>
+                    <li><strong>app.js</strong> pentru configurarea serverului.</li>
+                    <li><strong>views/</strong> pentru paginile EJS.</li>
+                    <li><strong>middleware/</strong> pentru logare si protectie rute.</li>
+                    <li><strong>db/</strong> pentru datele simulate.</li>
+                    <li><strong>public/</strong> pentru stiluri.</li>
+                </ul>
+            </article>
+
+            <article class="card">
+                <h2>Date initiale</h2>
+                <p class="muted">Am pastrat tema listei de cumparaturi din codul tau initial si am folosit produse exemplu pentru utilizatorul demo.</p>
+                <p><strong>Cont demo:</strong> admin / admin123</p>
+            </article>
+        </section>
+
+        <section class="card" id="exemple">
+            <h2>Exemple de produse din aplicatie</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produs</th>
+                        <th>Categorie</th>
+                        <th>Cantitate</th>
+                        <th>Pret</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mere</td>
+                        <td>Fructe</td>
+                        <td>2</td>
+                        <td>4.50 RON</td>
+                    </tr>
+                    <tr>
+                        <td>Paine</td>
+                        <td>Panificatie</td>
+                        <td>1</td>
+                        <td>3.00 RON</td>
+                    </tr>
+                    <tr>
+                        <td>Apa minerala</td>
+                        <td>Bauturi</td>
+                        <td>6</td>
+                        <td>2.20 RON</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="grid" id="pasi">
+            <article class="card">
+                <h2>Pasii de rulare</h2>
+                <ol>
+                    <li>Deschizi terminalul in folderul proiectului.</li>
+                    <li>Rulezi <strong>npm install</strong>.</li>
+                    <li>Optional copiezi <strong>.env.example</strong> in <strong>.env</strong>.</li>
+                    <li>Rulezi <strong>npm start</strong>.</li>
+                    <li>Accesezi <strong>http://localhost:3000</strong>.</li>
+                </ol>
+            </article>
+
+            <article class="card">
+                <h2>Legatura cu 3.html</h2>
+                <p class="muted">
+                    Codul initial a fost o pagina HTML cu tema lista de cumparaturi si exemple de produse.
+                    In versiunea actuala, aceeasi idee a fost extinsa intr-o aplicatie web completa pentru cerintele din Lab 6.
+                </p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        Proiect pregatit pentru tema Lab 6, pe baza codului tau initial.
+    </footer>
+</body>
+</html>
